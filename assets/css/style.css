@@ -1,0 +1,25 @@
+body {
+    background: url("https://hdwallsource.com/img/2014/7/bokeh-background-32257-32996-hd-wallpapers.jpg");
+    background-repeat: no-repeat;
+}
+
+div {
+    background-color: #F96037;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+}
+
+h1 {
+    font-family: 'Abril Fatface', cursive;
+    text-align: center;
+    letter-spacing: 0.125em;
+    font-size: 48px;
+}
+
+p {
+    font-family: 'Cabin', cursive;
+    font-size: 14px;
+    color: #d3d3d3;
+}
