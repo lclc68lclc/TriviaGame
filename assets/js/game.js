@@ -12,7 +12,7 @@ var quizQuestions = [{
             c: "2005",
             d: "2010"
         },
-        correctAnswer: "b"
+        correctAnswer: "2004"
     },
     {
         question: "What company has Facebook acquired?",
@@ -22,7 +22,7 @@ var quizQuestions = [{
             c: "Instagram",
             d: "WhatsApp"
         },
-        correctAnswer: "d"
+        correctAnswer: "WhatsApp"
     },
     {
         question: "What was the first video uploaded to YouTube?",
@@ -32,7 +32,7 @@ var quizQuestions = [{
             c: "A seminar on space",
             d: "The 2001 MTV awards"
         },
-        correctAnswer: "a"
+        correctAnswer: "A trip to the Zoo"
     },
     {
         question: "Which online activity is ranked number one?",
@@ -42,7 +42,7 @@ var quizQuestions = [{
             c: "emailing",
             d: "buying and selling"
         },
-        correctAnswer: "a"
+        correctAnswer: "searching"
     },
     {
         question: "Which social media site is the best?",
@@ -52,7 +52,7 @@ var quizQuestions = [{
             c: "Linkedin",
             d: "all of the above"
         },
-        correctAnswer: "d"
+        correctAnswer: "all of the above"
     },
 ];
 var timeLeft = 30;
@@ -63,7 +63,7 @@ function timer() {
     function less() {
         if (timeLeft == 0) {
             $(".timer").html("<h2>Time's Up!</h2>");
-            //getAnswers();
+            getAnswers();
             showAnswers();
         } else {
             timeLeft--;
@@ -74,18 +74,35 @@ function timer() {
 }
 //grab the answers once time is up
 function getAnswers() {
-    var quizAnswers = document.querySelectorAll('quiz');
-
-    for (var x = 0; x < quizQuestions.length; x++) {
-        var choice = quizAnswers[x].querySelector('input[name=pickOne' + x + ']:checked').value;
-        console.log(choice);
-        if (choice === quizQuestions[x].correctAnswer) {
-            console.log(quizQuestions[x].correctAnswer);
-            correct++;
-            console.log("Correct answers " + correct);
-        } else {
-            incorrect++;
-        }
+    var firstOne = document.querySelector('input[name=pickOne0]:checked').value;
+    if (firstOne === quizQuestions[0].correctAnswer) {
+        correct++;
+    } else {
+        incorrect++;
+    }
+    var secondOne = document.querySelector('input[name=pickOne1]:checked').value;
+    if (secondOne === quizQuestions[1].correctAnswer) {
+        correct++;
+    } else {
+        incorrect++;
+    }
+    var thirdOne = document.querySelector('input[name=pickOne2]:checked').value;
+    if (thirdOne === quizQuestions[2].correctAnswer) {
+        correct++;
+    } else {
+        incorrect++;
+    }
+    var fourthOne = document.querySelector('input[name=pickOne3]:checked').value;
+    if (fourthOne === quizQuestions[3].correctAnswer) {
+        correct++;
+    } else {
+        incorrect++;
+    }
+    var fifthOne = document.querySelector('input[name=pickOne4]:checked').value;
+    if (fifthOne === quizQuestions[4].correctAnswer) {
+        correct++;
+    } else {
+        incorrect++;
     }
 }
 
