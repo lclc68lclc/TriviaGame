@@ -76,7 +76,6 @@ function timer() {
 function getAnswers() {
     var quizAnswers = document.querySelectorAll('quiz');
 
-
     for (var x = 0; x < quizQuestions.length; x++) {
         var choice = quizAnswers[x].querySelector('input[name=pickOne' + x + ']:checked').value;
         console.log(choice);
