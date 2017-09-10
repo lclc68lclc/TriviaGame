@@ -64,6 +64,7 @@ function timer() {
         if (timeLeft == 0) {
             $(".timer").html("<h2>Time's Up!</h2>");
             //getAnswers();
+            showAnswers();
         } else {
             timeLeft--;
             $(".timer").html('<h2>' + timeLeft + ' Seconds left</h2>');
@@ -74,6 +75,7 @@ function timer() {
 //grab the answers once time is up
 function getAnswers() {
     var quizAnswers = document.querySelectorAll('quiz');
+
 
     for (var x = 0; x < quizQuestions.length; x++) {
         var choice = quizAnswers[x].querySelector('input[name=pickOne' + x + ']:checked').value;
@@ -89,6 +91,7 @@ function getAnswers() {
 }
 
 function showAnswers() {
+    $(".quiz").html("<h2>You got the following: </h2>" + "<p>Correct answers: " + correct + "</p>" + "<p>Incorrect answers: " + incorrect + "</p>");
 
 }
 
@@ -97,7 +100,7 @@ $(document).ready(function() {
     $("#start-game").on("click", function() {
         $(".button").hide();
         $(".quiz").show();
-        //timer();
+        timer();
 
 
         function quizBuilder() {
@@ -117,4 +120,3 @@ $(document).ready(function() {
 
     });
 });
-//add all questions to a new array
