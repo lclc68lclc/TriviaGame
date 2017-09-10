@@ -1,3 +1,4 @@
+var count = 30;
 var quizQuestions = [{
         question: "What year was Facebook founded?",
         answers: {
@@ -51,11 +52,23 @@ var quizQuestions = [{
 ];
 
 $(document).ready(function() {
-    function quizBuilder() {
-        var output = [];
-        for (var i = 0; i < quizQuestions.length; i++) {
-            $("#quiz").html('<p><input type="radio" id="questionRadio" value="' + quizQuestions[i].answers[0] + '"">  ' + quizQuestions[i].answers[0] + '</p>');
+
+    $("#start-game").on("click", function() {
+        $(".button").hide();
+
+
+        function quizBuilder() {
+            var output = [];
+            for (var i in quizQuestions) {
+
+                $("#quiz").show().html('<p>' + quizQuestions[i].question + "</p>" +
+                    '<p><input type="radio" name="pickOne" value="' + quizQuestions[i].answers.a + '">' + quizQuestions[i].answers.a + '</p>' +
+                    '<p><input type="radio" name="pickOne" value="' + quizQuestions[i].answers.b + '">' + quizQuestions[i].answers.b + '</p>' +
+                    '<p><input type="radio" name="pickOne" value="' + quizQuestions[i].answers.c + '">' + quizQuestions[i].answers.c + '</p>' +
+                    '<p><input type="radio" name="pickOne" value="' + quizQuestions[i].answers.d + '">' + quizQuestions[i].answers.d + '</p>');
+
+            }
         }
-    }
-    quizBuilder();
+        quizBuilder();
+    });
 });

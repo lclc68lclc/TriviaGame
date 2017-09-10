@@ -9,6 +9,7 @@ div {
     margin-left: auto;
     margin-right: auto;
     color: #ffffff;
+    padding-bottom: 20px;
 }
 
 h1 {
@@ -20,6 +21,25 @@ h1 {
 
 p {
     font-family: 'Cabin', cursive;
-    font-size: 14px;
-    color: #d3d3d3;
+    font-size: 20px;
+    color: #F1EDED;
+}
+
+.button {
+    background-color: #F71488;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 26px;
+    font-family: 'Abril Fatface', cursive;
+    display: block;
+    width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#quiz {
+    display: none;
 }
