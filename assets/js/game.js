@@ -1,4 +1,9 @@
-var count = 30;
+//Holds the correct and incorrect answers
+var correct = 0;
+var incorrect = 0;
+//Holds the unanswered questions
+var unanswered = 0;
+//holds the choice we make
 var quizQuestions = [{
         question: "What year was Facebook founded?",
         answers: {
@@ -50,36 +55,66 @@ var quizQuestions = [{
         correctAnswer: "d"
     },
 ];
+var timeLeft = 30;
+//countdown function
+function timer() {
+    $(".timer").html('<h2>' + timeLeft + ' Seconds remaining</h2>');
 
+    function less() {
+        if (timeLeft == 0) {
+            $(".timer").html("<h2>Time's Up!</h2>");
+            //getAnswers();
+        } else {
+            timeLeft--;
+            $(".timer").html('<h2>' + timeLeft + ' Seconds left</h2>');
+        }
+    }
+    let tid = setInterval(less, 1000);
+}
+//grab the answers once time is up
+function getAnswers() {
+    var quizAnswers = document.querySelectorAll('quiz');
+
+    for (var x = 0; x < quizQuestions.length; x++) {
+        var choice = quizAnswers[x].querySelector('input[name=pickOne' + x + ']:checked').value;
+        console.log(choice);
+        if (choice === quizQuestions[x].correctAnswer) {
+            console.log(quizQuestions[x].correctAnswer);
+            correct++;
+            console.log("Correct answers " + correct);
+        } else {
+            incorrect++;
+        }
+    }
+}
+
+function showAnswers() {
+
+}
+
+//start the game
 $(document).ready(function() {
-
     $("#start-game").on("click", function() {
         $(".button").hide();
-        //$(".timer").show().html()
+        $(".quiz").show();
+        //timer();
+
 
         function quizBuilder() {
             var output = [];
             for (var i = 0; i < quizQuestions.length; i++) {
-                answers = [];
 
-                for (var letter in question[i].answers) {
-                    answers.push(
-                        '<label>' +
-                        '<input type="radio" name="question' + i + '" value="' + letter + '">' +
-                        letter + ': ' +
-                        questions[i].answers[letter] +
-                        '</label>'
-                    );
-                    /*$("#quiz").show().html('<p>' + quizQuestions[i].question + "</p>" +
-                        '<p><input type="radio" name="pickOne" value="' + quizQuestions[i].answers.a + '">' + quizQuestions[i].answers.a + '</p>' +
-                        '<p><input type="radio" name="pickOne" value="' + quizQuestions[i].answers.b + '">' + quizQuestions[i].answers.b + '</p>' +
-                        '<p><input type="radio" name="pickOne" value="' + quizQuestions[i].answers.c + '">' + quizQuestions[i].answers.c + '</p>' +
-                        '<p><input type="radio" name="pickOne" value="' + quizQuestions[i].answers.d + '">' + quizQuestions[i].answers.d + '</p>');
-
-                */
-                }
+                var setupQuestion = ('<p>' + quizQuestions[i].question + "</p>" +
+                    '<p><input type="radio" id="answerRadio" name="pickOne' + i + '" value="' + quizQuestions[i].answers.a + '">' + quizQuestions[i].answers.a + '</p>' +
+                    '<p><input type="radio" id="answerRadio" name="pickOne' + i + '" value="' + quizQuestions[i].answers.b + '">' + quizQuestions[i].answers.b + '</p>' +
+                    '<p><input type="radio" id="answerRadio" name="pickOne' + i + '" value="' + quizQuestions[i].answers.c + '">' + quizQuestions[i].answers.c + '</p>' +
+                    '<p><input type="radio" id="answerRadio" name="pickOne' + i + '" value="' + quizQuestions[i].answers.d + '">' + quizQuestions[i].answers.d + '</p> <hr />');
+                output.push(setupQuestion);
+                $("#quiz").html(output);
             }
         }
         quizBuilder();
+
     });
 });
+//add all questions to a new array

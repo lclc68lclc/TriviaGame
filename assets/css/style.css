@@ -19,6 +19,12 @@ h1 {
     font-size: 48px;
 }
 
+h2 {
+    font-family: 'Cabin', cursive;
+    text-align: center;
+    color: #F71488;
+}
+
 p {
     font-family: 'Cabin', cursive;
     font-size: 20px;
